@@ -4,6 +4,13 @@ The Medium article for this use case :
 
 https://medium.com/@mazlum.tosun/ci-cd-for-dataflow-java-with-flex-templates-and-cloud-build-e3c584b8e564
 
+
+## To launch the job locally :
+
+- Copy the file from the project `gcs_input_file/input_teams_stats_raw.json` to the input bucket
+- Create the `team_stat` `BigQuery` table, the script and the `BigQuery` schema are proposed in the `bigquery_table_scripts` folder
+
+
 ## Run job with Dataflow runner from local machine :
 
 ```bash

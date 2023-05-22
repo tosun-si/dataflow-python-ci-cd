@@ -1,0 +1,96 @@
+[
+  {
+    "name": "teamName",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Team name"
+  },
+  {
+    "name": "teamScore",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "Team score"
+  },
+  {
+    "name": "teamTotalGoals",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "Team total goals"
+  },
+  {
+    "name": "teamSlogan",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Team slogan"
+  },
+  {
+    "name": "topScorerStats",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "Top scorer stats",
+    "fields": [
+      {
+        "name": "firstName",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "First name"
+      },
+      {
+        "name": "lastName",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "Last name"
+      },
+      {
+        "name": "goals",
+        "type": "INTEGER",
+        "mode": "NULLABLE",
+        "description": "Goals"
+      },
+      {
+        "name": "games",
+        "type": "INTEGER",
+        "mode": "NULLABLE",
+        "description": "Games"
+      }
+    ]
+  },
+  {
+    "name": "bestPasserStats",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "Best passer stats",
+    "fields": [
+      {
+        "name": "firstName",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "First name"
+      },
+      {
+        "name": "lastName",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "Last name"
+      },
+      {
+        "name": "goalAssists",
+        "type": "INTEGER",
+        "mode": "NULLABLE",
+        "description": "Goals assists"
+      },
+      {
+        "name": "games",
+        "type": "INTEGER",
+        "mode": "NULLABLE",
+        "description": "Games"
+      }
+    ]
+  },
+  {
+    "name": "ingestionDate",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "Ingestion date"
+  }
+]
