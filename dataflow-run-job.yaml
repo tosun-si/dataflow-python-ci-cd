@@ -1,0 +1,14 @@
+steps:
+  - name: google/cloud-sdk:420.0.0-slim
+    args: [ './scripts/run_dataflow_job.sh' ]
+    env:
+      - 'PROJECT_ID=$PROJECT_ID'
+      - 'LOCATION=$LOCATION'
+      - 'JOB_NAME=$_JOB_NAME'
+      - 'METADATA_TEMPLATE_FILE_PATH=$_METADATA_TEMPLATE_FILE_PATH'
+      - 'TEMP_LOCATION=$_TEMP_LOCATION'
+      - 'STAGING_LOCATION=$_STAGING_LOCATION'
+      - 'SA_EMAIL=$_SA_EMAIL'
+      - 'INPUT_FILE=$_INPUT_FILE'
+      - 'TEAM_LEAGUE_DATASET=$_TEAM_LEAGUE_DATASET'
+      - 'TEAM_STATS_TABLE=$_TEAM_STATS_TABLE'

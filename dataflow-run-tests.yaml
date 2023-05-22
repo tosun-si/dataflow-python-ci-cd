@@ -1,0 +1,4 @@
+steps:
+  - name: maven:3.8.6-openjdk-11-slim
+    script: |
+      mvn test
