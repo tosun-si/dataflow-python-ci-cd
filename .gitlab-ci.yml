@@ -1,0 +1,58 @@
+image: python:3.8.12-slim
+
+variables:
+  ENV_DEV: "dev"
+  GCLOUD_IMAGE_NAME: google/cloud-sdk:420.0.0
+
+stages:
+  - tests
+  - build_flex_template_image
+  - deploy_flex_template
+  - run_dataflow_job
+
+tests:
+  stage: tests
+  script:
+    - pip install 'apache-beam[gcp]==2.47.0'
+    - pip install 'pytest==7.3.1'
+    - pip install -U -r team_league/requirements.txt
+    - pytest -v --suppress-no-test-exit-code .
+  artifacts:
+    expire_in: 4 hrs
+    paths:
+      - target
+
+build_flex_template_image:
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [ '' ]
+  stage: build_flex_template_image
+  when: manual
+  before_script:
+    - . ./scripts/export_env_variables.sh
+  script:
+    - . ./scripts/build_dataflow_image_kaniko.sh
+  environment:
+    name: $ENV_DEV
+
+deploy_flex_template:
+  image: $GCLOUD_IMAGE_NAME
+  stage: deploy_flex_template
+  when: manual
+  before_script:
+    - . ./scripts/export_env_variables.sh
+  script:
+    - . ./scripts/gcp_authentication.sh
+    - . ./scripts/deploy_dataflow_job_outside_cloud_build.sh
+  environment:
+    name: $ENV_DEV
+
+run_dataflow_job:
+  image: $GCLOUD_IMAGE_NAME
+  stage: run_dataflow_job
+  when: manual
+  before_script:
+    - . ./scripts/export_env_variables.sh
+  script:
+    - . ./scripts/gcp_authentication.sh
+    - . ./scripts/run_dataflow_job.sh

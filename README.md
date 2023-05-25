@@ -44,7 +44,6 @@ gcloud dataflow flex-template build gs://mazlum_dev/dataflow/templates/team_leag
   --metadata-file "config/metadata.json" \
   --py-path "." \
   --env "FLEX_TEMPLATE_PYTHON_PY_FILE=team_league/application/team_league_app.py" \
-  --env "FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE=team_league/requirements.txt" \
   --env "FLEX_TEMPLATE_PYTHON_SETUP_FILE=setup.py"
 ```
 
@@ -79,7 +78,7 @@ gcloud builds submit \
     --project=$PROJECT_ID \
     --region=$LOCATION \
     --config dataflow-deploy-job.yaml \
-    --substitutions _REPO_NAME="internal-images",_IMAGE_NAME="dataflow/team-league-python",_IMAGE_TAG="latest",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_SDK_LANGUAGE="PYTHON",_PY_PATH=".",_FLEX_TEMPLATE_BASE_IMAGE="PYTHON3",_METADATA_FILE="config/metadata.json",_FLEX_TEMPLATE_PYTHON_PY_FILE="team_league/application/team_league_app.py",_FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE="team_league/requirements.txt" \
+    --substitutions _REPO_NAME="internal-images",_IMAGE_NAME="dataflow/team-league-python",_IMAGE_TAG="latest",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_SDK_LANGUAGE="PYTHON",_PY_PATH=".",_FLEX_TEMPLATE_BASE_IMAGE="PYTHON3",_METADATA_FILE="config/metadata.json",_FLEX_TEMPLATE_PYTHON_PY_FILE="team_league/application/team_league_app.py",_PY_PATH=".",_FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE="team_league/requirements.txt",_FLEX_TEMPLATE_PYTHON_SETUP_FILE="setup.py" \
     --verbosity="debug" .
 ```
 
