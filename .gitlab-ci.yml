@@ -17,11 +17,7 @@ tests:
     - pip install 'pytest-custom-exit-code==0.3.0'
     - pip install -U -r team_league/requirements.txt
     - pytest -v --suppress-no-test-exit-code .
-  artifacts:
-    expire_in: 4 hrs
-    paths:
-      - target
-
+  
 build_flex_template_image:
   image:
     name: gcr.io/kaniko-project/executor:debug

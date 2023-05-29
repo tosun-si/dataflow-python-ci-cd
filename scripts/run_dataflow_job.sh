@@ -12,6 +12,7 @@ gcloud dataflow flex-template run "$JOB_NAME-$(date +%Y%m%d-%H%M%S)" \
   --region="$LOCATION" \
   --temp-location="$TEMP_LOCATION" \
   --staging-location="$STAGING_LOCATION" \
+  --parameters project_id="$PROJECT_ID" \
   --parameters service_account_email="$SA_EMAIL" \
   --parameters input_json_file="$INPUT_FILE" \
   --parameters team_league_dataset="$TEAM_LEAGUE_DATASET" \
