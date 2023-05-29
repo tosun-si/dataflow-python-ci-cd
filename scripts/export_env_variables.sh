@@ -13,11 +13,6 @@ export IMAGE_TAG=latest
 export METADATA_FILE="config/metadata.json"
 export METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json"
 export SDK_LANGUAGE=PYTHON
-export FLEX_TEMPLATE_BASE_IMAGE=PYTHON3
-export PY_PATH="."
-export FLEX_TEMPLATE_PYTHON_PY_FILE="team_league/application/team_league_app.py"
-export FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE="team_league/requirements.txt"
-export FLEX_TEMPLATE_PYTHON_SETUP_FILE="setup.py"
 export JOB_NAME="team-league-java"
 
 export TEMP_LOCATION=gs://mazlum_dev/dataflow/temp

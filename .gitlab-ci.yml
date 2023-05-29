@@ -13,7 +13,6 @@ stages:
 tests:
   stage: tests
   script:
-    - pip install 'apache-beam[gcp]==2.47.0'
     - pip install 'pytest==7.3.1'
     - pip install -U -r team_league/requirements.txt
     - pytest -v --suppress-no-test-exit-code .
@@ -31,7 +30,7 @@ build_flex_template_image:
   before_script:
     - . ./scripts/export_env_variables.sh
   script:
-    - . ./scripts/build_dataflow_image_kaniko.sh
+    - . ./scripts/build_image_kaniko.sh
   environment:
     name: $ENV_DEV
 
@@ -43,7 +42,7 @@ deploy_flex_template:
     - . ./scripts/export_env_variables.sh
   script:
     - . ./scripts/gcp_authentication.sh
-    - . ./scripts/deploy_dataflow_job_outside_cloud_build.sh
+    - . ./scripts/create_flex_template_spec_file_gcs.sh
   environment:
     name: $ENV_DEV
 

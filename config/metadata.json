@@ -3,6 +3,11 @@
   "description": "A Team League Standard Beam App",
   "parameters": [
     {
+      "name": "project_id",
+      "label": "Project ID.",
+      "helpText": "Project ID."
+    },
+    {
       "name": "input_json_file",
       "label": "Input Json file.",
       "helpText": "Input Json file to read from."

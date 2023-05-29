@@ -1,0 +1,17 @@
+steps:
+  - name: google/cloud-sdk:420.0.0-slim
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ./scripts/build_image_with_dockerfile.sh \
+        && ./scripts/create_flex_template_spec_file_gcs.sh
+    env:
+      - 'PROJECT_ID=$PROJECT_ID'
+      - 'LOCATION=$LOCATION'
+      - 'REPO_NAME=$_REPO_NAME'
+      - 'IMAGE_NAME=$_IMAGE_NAME'
+      - 'IMAGE_TAG=$_IMAGE_TAG'
+      - 'METADATA_TEMPLATE_FILE_PATH=$_METADATA_TEMPLATE_FILE_PATH'
+      - 'SDK_LANGUAGE=$_SDK_LANGUAGE'
+      - 'METADATA_FILE=$_METADATA_FILE'

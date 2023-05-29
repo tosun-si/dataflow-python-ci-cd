@@ -38,13 +38,9 @@ gcloud builds submit --tag europe-west1-docker.pkg.dev/gb-poc-373711/internal-im
 
 ```bash
 gcloud dataflow flex-template build gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json \
-  --image-gcr-path "europe-west1-docker.pkg.dev/gb-poc-373711/internal-images/dataflow/team-league-python:latest" \
+  --image "europe-west1-docker.pkg.dev/gb-poc-373711/internal-images/dataflow/team-league-python:latest" \
   --sdk-language "PYTHON" \
-  --flex-template-base-image "PYTHON3" \
-  --metadata-file "config/metadata.json" \
-  --py-path "." \
-  --env "FLEX_TEMPLATE_PYTHON_PY_FILE=team_league/application/team_league_app.py" \
-  --env "FLEX_TEMPLATE_PYTHON_SETUP_FILE=setup.py"
+  --metadata-file "config/metadata.json"
 ```
 
 # Run a Flex Template pipeline :
@@ -56,6 +52,7 @@ gcloud dataflow flex-template run "team-league-python-`date +%Y%m%d-%H%M%S`" \
     --region=europe-west1 \
     --temp-location=gs://mazlum_dev/dataflow/temp \
     --staging-location=gs://mazlum_dev/dataflow/staging \
+    --parameters project_id=gb-poc-373711 \
     --parameters service_account_email=sa-dataflow-dev@gb-poc-373711.iam.gserviceaccount.com \
     --parameters input_json_file=gs://mazlum_dev/team_league/input/json/input_teams_stats_raw.json \
     --parameters team_league_dataset=mazlum_test \
