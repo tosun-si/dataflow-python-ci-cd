@@ -14,6 +14,7 @@ tests:
   stage: tests
   script:
     - pip install 'pytest==7.3.1'
+    - pip install 'pytest-custom-exit-code==0.3.0'
     - pip install -U -r team_league/requirements.txt
     - pytest -v --suppress-no-test-exit-code .
   artifacts:
