@@ -136,3 +136,24 @@ gcloud beta builds triggers create manual \
     --verbosity="debug"
 ```
 
+
+# Build the image and create the Flex Template spec file with Dagger IO
+
+Execute the script `export_env_variables.sh` : 
+
+```bash
+./scripts/export_env_variables.sh
+```
+
+Run the `build_image_and_spec_flex_template.go` script that build the Dockerfile and create the spec file in 
+the Cloud Storage bucket for Flex Template : 
+
+```
+go run build_image_and_spec_flex_template.go
+```
+
+Run the `run_flex_template.go` script that run the Flex Template and the Dataflow job :
+
+```
+go run build_image_and_spec_flex_template.go
+```
