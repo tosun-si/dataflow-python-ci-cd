@@ -106,17 +106,17 @@ gcloud beta builds triggers create github \
     --verbosity="debug"
 ```
 
-### Deploy the Flex Template with a manual trigger on Github repository
+### Build image from Dockerfile with all dependencies image and create spec file using a manual trigger on Github repository
 
 ```bash
 gcloud beta builds triggers create manual \
     --project=$PROJECT_ID \
     --region=$LOCATION \
-    --name="deploy-dataflow-template-team-league-python" \
+    --name="deploy-dataflow-template-team-league-python-dockerfile" \
     --repo="https://github.com/tosun-si/dataflow-python-ci-cd" \
     --repo-type="GITHUB" \
     --branch="main" \
-    --build-config="dataflow-deploy-job.yaml" \
+    --build-config="dataflow-deploy-template-dockerfile-all-dependencies.yaml" \
     --substitutions _REPO_NAME="internal-images",_IMAGE_NAME="dataflow/team-league-python",_IMAGE_TAG="latest",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_SDK_LANGUAGE="PYTHON",_FLEX_TEMPLATE_BASE_IMAGE="PYTHON3",_PY_PATH=".",_FLEX_TEMPLATE_PYTHON_PY_FILE="team_league/application/team_league_app.py",_FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE="team_league/requirements.txt" \
     --verbosity="debug"
 ```

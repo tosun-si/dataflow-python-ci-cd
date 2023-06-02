@@ -48,6 +48,7 @@ func main() {
 		From("gcr.io/kaniko-project/executor:v1.9.0-debug").
 		WithEntrypoint([]string{}).
 		WithDirectory(".", source).
+		WithEnvVariable("CI_SERVICE_NAME", "dagger").
 		WithEnvVariable("PROJECT_ID", projectId).
 		WithEnvVariable("LOCATION", location).
 		WithEnvVariable("REPO_NAME", repoName).
@@ -64,6 +65,7 @@ func main() {
 	createFlexTemplateSpecFileGcs := client.Container().
 		From("google/cloud-sdk:420.0.0-slim").
 		WithDirectory(".", buildFlexTemplateImage).
+		WithEnvVariable("CI_SERVICE_NAME", "dagger").
 		WithEnvVariable("PROJECT_ID", projectId).
 		WithEnvVariable("LOCATION", location).
 		WithEnvVariable("REPO_NAME", repoName).

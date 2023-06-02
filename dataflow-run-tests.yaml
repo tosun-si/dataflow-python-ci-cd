@@ -1,4 +1,7 @@
 steps:
-  - name: maven:3.8.6-openjdk-11-slim
+  - name: python:3.8.12-slim
     script: |
-      mvn test
+      pip install 'pytest==7.3.1'
+      pip install 'pytest-custom-exit-code==0.3.0'
+      pip install -U -r team_league/requirements.txt
+      pytest -v --suppress-no-test-exit-code .

@@ -12,4 +12,4 @@ echo "#######Building Dataflow Docker image with Kaniko"
   --single-snapshot \
   --context $CI_PROJECT_DIR \
   --dockerfile $CI_PROJECT_DIR/Dockerfile \
-  --destination "$LOCATION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$IMAGE_TAG"
+  --destination "$LOCATION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME/$CI_SERVICE_NAME:$IMAGE_TAG"

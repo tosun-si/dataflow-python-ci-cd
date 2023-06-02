@@ -3,11 +3,12 @@ image: python:3.8.12-slim
 variables:
   ENV_DEV: "dev"
   GCLOUD_IMAGE_NAME: google/cloud-sdk:420.0.0
+  CI_SERVICE_NAME: gitlab-ci
 
 stages:
   - tests
   - build_flex_template_image
-  - deploy_flex_template
+  - deploy_flex_template_spec_file
   - run_dataflow_job
 
 tests:
@@ -17,7 +18,7 @@ tests:
     - pip install 'pytest-custom-exit-code==0.3.0'
     - pip install -U -r team_league/requirements.txt
     - pytest -v --suppress-no-test-exit-code .
-  
+
 build_flex_template_image:
   image:
     name: gcr.io/kaniko-project/executor:debug
@@ -31,9 +32,9 @@ build_flex_template_image:
   environment:
     name: $ENV_DEV
 
-deploy_flex_template:
+deploy_flex_template_spec_file:
   image: $GCLOUD_IMAGE_NAME
-  stage: deploy_flex_template
+  stage: deploy_flex_template_spec_file
   when: manual
   before_script:
     - . ./scripts/export_env_variables.sh

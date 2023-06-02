@@ -2,6 +2,7 @@ steps:
   - name: google/cloud-sdk:420.0.0-slim
     args: [ './scripts/run_dataflow_job.sh' ]
     env:
+      - 'CI_SERVICE_NAME=cloud-build'
       - 'PROJECT_ID=$PROJECT_ID'
       - 'LOCATION=$LOCATION'
       - 'JOB_NAME=$_JOB_NAME'

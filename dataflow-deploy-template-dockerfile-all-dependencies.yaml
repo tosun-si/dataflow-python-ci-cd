@@ -7,6 +7,7 @@ steps:
         ./scripts/build_image_with_dockerfile.sh \
         && ./scripts/create_flex_template_spec_file_gcs.sh
     env:
+      - 'CI_SERVICE_NAME=cloud-build'
       - 'PROJECT_ID=$PROJECT_ID'
       - 'LOCATION=$LOCATION'
       - 'REPO_NAME=$_REPO_NAME'

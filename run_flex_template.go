@@ -48,6 +48,7 @@ func main() {
 	runFlexTemplate := client.Container().
 		From("google/cloud-sdk:420.0.0-slim").
 		WithDirectory(".", source).
+		WithEnvVariable("CI_SERVICE_NAME", "dagger").
 		WithEnvVariable("PROJECT_ID", projectId).
 		WithEnvVariable("LOCATION", location).
 		WithEnvVariable("JOB_NAME", jobName).

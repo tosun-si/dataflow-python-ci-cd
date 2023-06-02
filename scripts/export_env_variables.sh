@@ -8,12 +8,12 @@ export PROJECT_ID=gb-poc-373711
 export LOCATION=europe-west1
 
 export REPO_NAME=internal-images
-export IMAGE_NAME="dataflow/team-league-python-dagger"
+export IMAGE_NAME="dataflow/team-league-python"
 export IMAGE_TAG=latest
 export METADATA_FILE="config/metadata.json"
-export METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json"
+export METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python"
 export SDK_LANGUAGE=PYTHON
-export JOB_NAME="team-league-python-dagger"
+export JOB_NAME="team-league-python"
 export TEMP_LOCATION=gs://mazlum_dev/dataflow/temp
 export STAGING_LOCATION="gs://mazlum_dev/dataflow/staging"
 
