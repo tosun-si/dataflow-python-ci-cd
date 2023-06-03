@@ -85,7 +85,7 @@ gcloud builds submit \
 gcloud builds submit \
     --project=$PROJECT_ID \
     --region=$LOCATION \
-    --config dataflow-run-job.yaml \
+    --config dataflow-run-template.yaml \
     --substitutions _JOB_NAME="team-league-python",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_TEMP_LOCATION="gs://mazlum_dev/dataflow/temp",_STAGING_LOCATION="gs://mazlum_dev/dataflow/staging",_SA_EMAIL="sa-dataflow-dev@gb-poc-373711.iam.gserviceaccount.com",_INPUT_FILE="gs://mazlum_dev/team_league/input/json/input_teams_stats_raw.json",_SIDE_INPUT_FILE="gs://mazlum_dev/team_league/input/json/input_team_slogans.json",_TEAM_LEAGUE_DATASET="mazlum_test",_TEAM_STATS_TABLE="team_stat" \
     --verbosity="debug" .
 ```
@@ -98,6 +98,7 @@ gcloud builds submit \
 gcloud beta builds triggers create github \
     --project=$PROJECT_ID \
     --region=$LOCATION \
+    --name="run-dataflow-unit-tests-python" \
     --repo-name=dataflow-python-ci-cd \
     --repo-owner=tosun-si \
     --branch-pattern=".*" \
@@ -131,7 +132,7 @@ gcloud beta builds triggers create manual \
     --repo="https://github.com/tosun-si/dataflow-python-ci-cd" \
     --repo-type="GITHUB" \
     --branch="main" \
-    --build-config="dataflow-run-job.yaml" \
+    --build-config="dataflow-run-template.yaml" \
     --substitutions _JOB_NAME="team-league-python",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_TEMP_LOCATION="gs://mazlum_dev/dataflow/temp",_STAGING_LOCATION="gs://mazlum_dev/dataflow/staging",_SA_EMAIL="sa-dataflow-dev@gb-poc-373711.iam.gserviceaccount.com",_INPUT_FILE="gs://mazlum_dev/team_league/input/json/input_teams_stats_raw.json",_TEAM_LEAGUE_DATASET="mazlum_test",_TEAM_STATS_TABLE="team_stat" \
     --verbosity="debug"
 ```

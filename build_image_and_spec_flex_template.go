@@ -58,7 +58,7 @@ func main() {
 		WithExec([]string{
 			"sh",
 			"-c",
-			"/kaniko/executor --use-new-run --single-snapshot --context=dir://./ --dockerfile Dockerfile --destination $LOCATION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$IMAGE_TAG",
+			"/kaniko/executor --use-new-run --single-snapshot --context=dir://./ --dockerfile Dockerfile --destination $LOCATION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME/$CI_SERVICE_NAME:$IMAGE_TAG",
 		}).
 		Directory(".")
 
