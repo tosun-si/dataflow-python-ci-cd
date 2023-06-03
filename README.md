@@ -118,7 +118,7 @@ gcloud beta builds triggers create manual \
     --repo-type="GITHUB" \
     --branch="main" \
     --build-config="dataflow-deploy-template-dockerfile-all-dependencies.yaml" \
-    --substitutions _REPO_NAME="internal-images",_IMAGE_NAME="dataflow/team-league-python",_IMAGE_TAG="latest",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_SDK_LANGUAGE="PYTHON",_FLEX_TEMPLATE_BASE_IMAGE="PYTHON3",_PY_PATH=".",_FLEX_TEMPLATE_PYTHON_PY_FILE="team_league/application/team_league_app.py",_FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE="team_league/requirements.txt" \
+    --substitutions _REPO_NAME="internal-images",_IMAGE_NAME="dataflow/team-league-python",_IMAGE_TAG="latest",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_SDK_LANGUAGE="PYTHON",_METADATA_FILE="config/metadata.json" \
     --verbosity="debug"
 ```
 
