@@ -74,8 +74,8 @@ export LOCATION={{your_location}}
 gcloud builds submit \
     --project=$PROJECT_ID \
     --region=$LOCATION \
-    --config dataflow-deploy-job.yaml \
-    --substitutions _REPO_NAME="internal-images",_IMAGE_NAME="dataflow/team-league-python",_IMAGE_TAG="latest",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_SDK_LANGUAGE="PYTHON",_PY_PATH=".",_FLEX_TEMPLATE_BASE_IMAGE="PYTHON3",_METADATA_FILE="config/metadata.json",_FLEX_TEMPLATE_PYTHON_PY_FILE="team_league/application/team_league_app.py",_PY_PATH=".",_FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE="team_league/requirements.txt",_FLEX_TEMPLATE_PYTHON_SETUP_FILE="setup.py" \
+    --config dataflow-deploy-template-dockerfile-all-dependencies.yaml \
+    --substitutions _REPO_NAME="$REPO_NAME",_IMAGE_NAME="$IMAGE_NAME",_IMAGE_TAG="$IMAGE_TAG",_METADATA_TEMPLATE_FILE_PATH="$METADATA_TEMPLATE_FILE_PATH",_SDK_LANGUAGE="$SDK_LANGUAGE",_METADATA_FILE="$METADATA_FILE" \
     --verbosity="debug" .
 ```
 
@@ -86,7 +86,7 @@ gcloud builds submit \
     --project=$PROJECT_ID \
     --region=$LOCATION \
     --config dataflow-run-template.yaml \
-    --substitutions _JOB_NAME="team-league-python",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_TEMP_LOCATION="gs://mazlum_dev/dataflow/temp",_STAGING_LOCATION="gs://mazlum_dev/dataflow/staging",_SA_EMAIL="sa-dataflow-dev@gb-poc-373711.iam.gserviceaccount.com",_INPUT_FILE="gs://mazlum_dev/team_league/input/json/input_teams_stats_raw.json",_SIDE_INPUT_FILE="gs://mazlum_dev/team_league/input/json/input_team_slogans.json",_TEAM_LEAGUE_DATASET="mazlum_test",_TEAM_STATS_TABLE="team_stat" \
+    --substitutions _JOB_NAME="$JOB_NAME",_METADATA_TEMPLATE_FILE_PATH="$METADATA_TEMPLATE_FILE_PATH",_TEMP_LOCATION="$TEMP_LOCATION",_STAGING_LOCATION="$STAGING_LOCATION",_SA_EMAIL="$SA_EMAIL",_INPUT_FILE="$INPUT_FILE",_TEAM_LEAGUE_DATASET="$TEAM_LEAGUE_DATASET",_TEAM_STATS_TABLE="$TEAM_STATS_TABLE" \
     --verbosity="debug" .
 ```
 
@@ -118,7 +118,7 @@ gcloud beta builds triggers create manual \
     --repo-type="GITHUB" \
     --branch="main" \
     --build-config="dataflow-deploy-template-dockerfile-all-dependencies.yaml" \
-    --substitutions _REPO_NAME="internal-images",_IMAGE_NAME="dataflow/team-league-python",_IMAGE_TAG="latest",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_SDK_LANGUAGE="PYTHON",_METADATA_FILE="config/metadata.json" \
+    --substitutions _REPO_NAME="$REPO_NAME",_IMAGE_NAME="$IMAGE_NAME",_IMAGE_TAG="$IMAGE_TAG",_METADATA_TEMPLATE_FILE_PATH="$METADATA_TEMPLATE_FILE_PATH",_SDK_LANGUAGE="$SDK_LANGUAGE",_METADATA_FILE="$METADATA_FILE" \
     --verbosity="debug"
 ```
 
@@ -133,7 +133,7 @@ gcloud beta builds triggers create manual \
     --repo-type="GITHUB" \
     --branch="main" \
     --build-config="dataflow-run-template.yaml" \
-    --substitutions _JOB_NAME="team-league-python",_METADATA_TEMPLATE_FILE_PATH="gs://mazlum_dev/dataflow/templates/team_league/python/team-league-python.json",_TEMP_LOCATION="gs://mazlum_dev/dataflow/temp",_STAGING_LOCATION="gs://mazlum_dev/dataflow/staging",_SA_EMAIL="sa-dataflow-dev@gb-poc-373711.iam.gserviceaccount.com",_INPUT_FILE="gs://mazlum_dev/team_league/input/json/input_teams_stats_raw.json",_TEAM_LEAGUE_DATASET="mazlum_test",_TEAM_STATS_TABLE="team_stat" \
+    --substitutions _JOB_NAME="$JOB_NAME",_METADATA_TEMPLATE_FILE_PATH="$METADATA_TEMPLATE_FILE_PATH",_TEMP_LOCATION="$TEMP_LOCATION",_STAGING_LOCATION="$STAGING_LOCATION",_SA_EMAIL="$SA_EMAIL",_INPUT_FILE="$INPUT_FILE",_TEAM_LEAGUE_DATASET="$TEAM_LEAGUE_DATASET",_TEAM_STATS_TABLE="$TEAM_STATS_TABLE" \
     --verbosity="debug"
 ```
 
@@ -156,5 +156,5 @@ go run build_image_and_spec_flex_template.go
 Run the `run_flex_template.go` script that run the Flex Template and the Dataflow job :
 
 ```
-go run build_image_and_spec_flex_template.go
+go run run_flex_template.go
 ```

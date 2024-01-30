@@ -1,4 +1,4 @@
-FROM gcr.io/dataflow-templates-base/python3-template-launcher-base
+FROM gcr.io/dataflow-templates-base/python311-template-launcher-base
 
 ARG WORKDIR=/template
 RUN mkdir -p ${WORKDIR}
